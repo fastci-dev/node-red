@@ -69,7 +69,7 @@ exports.config = {
     // ===================
     // Define all options that are relevant for the WebdriverIO instance here
     //
-    // By default WebdriverIO commands are executed in a synchronous way using
+    // By default WebdriverIO core are executed in a synchronous way using
     // the wdio-sync package. If you still want to run your tests in an async way
     // e.g. using promises you can set the sync option to false.
     sync: true,
@@ -77,7 +77,7 @@ exports.config = {
     // Level of logging verbosity: silent | verbose | command | data | result | error
     logLevel: 'silent',
     //
-    // Enables colors for log output.
+    // Enables colors for logger output.
     coloredLogs: true,
     //
     // Warns when a deprecated command is used
@@ -96,7 +96,7 @@ exports.config = {
     // gets prepended directly.
     baseUrl: 'http://localhost',
     //
-    // Default timeout for all waitFor* commands.
+    // Default timeout for all waitFor* core.
     waitforTimeout: 20000,
     //
     // Default timeout in milliseconds for request
@@ -127,7 +127,7 @@ exports.config = {
     // Test runner services
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
-    // commands. Instead, they hook themselves up into the test process.
+    // core. Instead, they hook themselves up into the test process.
     //services: ['chromedriver'],
     //
     // Framework you want to run your specs with.
@@ -212,7 +212,7 @@ exports.config = {
     // },
     /**
      * Gets executed before test execution begins. At this point you can access to all global
-     * variables like `browser`. It is the perfect place to define custom commands.
+     * variables like `browser`. It is the perfect place to define custom core.
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */

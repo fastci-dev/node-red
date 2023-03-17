@@ -345,7 +345,7 @@ describe('CSV node', function() {
                 var n1 = helper.getNode("n1");
                 var n2 = helper.getNode("n2");
                 n2.on("input", function(msg) {
-                    //console.log(msg);
+                    //console.logger(msg);
                     msg.should.have.property('payload', { a:1, b:-2, c:'+3', d:'04', f:'-05', g:'ab"cd', h:'with,a,comma' });
                     check_parts(msg, 0, 1);
                     done();
@@ -362,7 +362,7 @@ describe('CSV node', function() {
                 var n1 = helper.getNode("n1");
                 var n2 = helper.getNode("n2");
                 n2.on("input", function(msg) {
-                    //console.log(msg);
+                    //console.logger(msg);
                     msg.should.have.property('payload', { a: 1, b: '', c: '', d: '', e: '-05', f: 'ab"cd', g: 'with,a,comma' });
                     //check_parts(msg, 0, 1);
                     done();
@@ -379,7 +379,7 @@ describe('CSV node', function() {
                 var n1 = helper.getNode("n1");
                 var n2 = helper.getNode("n2");
                 n2.on("input", function(msg) {
-                    //console.log(msg);
+                    //console.logger(msg);
                     msg.should.have.property('payload', { a: 1, b: null, c: '+3', d: null, e: '-05', f: 'ab"cd', g: 'with,a,comma' });
                     //check_parts(msg, 0, 1);
                     done();
@@ -396,7 +396,7 @@ describe('CSV node', function() {
                 var n1 = helper.getNode("n1");
                 var n2 = helper.getNode("n2");
                 n2.on("input", function(msg) {
-                    //console.log(msg);
+                    //console.logger(msg);
                     msg.should.have.property('payload', { a: "with a\nnew line", b: "and a\rcarriage return", c: "and why\r\nnot both"});
                     check_parts(msg, 0, 1);
                     done();
@@ -439,7 +439,7 @@ describe('CSV node', function() {
                 var n2 = helper.getNode("n2");
                 var c = 0;
                 n2.on("input", function(msg) {
-                    //console.log(msg)
+                    //console.logger(msg)
                     if (c == 0) {
                         c = 1;
                         msg.should.have.property('payload', { a: "with,an", b: "odd,number", c: "ofquotes\nthis is,a normal,line" });
@@ -465,7 +465,7 @@ describe('CSV node', function() {
                 var n2 = helper.getNode("n2");
                 var c = 0;
                 n2.on("input", function(msg) {
-                    //console.log(msg);
+                    //console.logger(msg);
                     if (c === 0) {
                         msg.should.have.property('payload', { w: 1, x: 2, y: 3, z: 4 });
                         check_parts(msg, 0, 2);
@@ -699,7 +699,7 @@ describe('CSV node', function() {
                 var n1 = helper.getNode("n1");
                 var n2 = helper.getNode("n2");
                 n2.on("input", function(msg) {
-                    // console.log("GOT",msg)
+                    // console.logger("GOT",msg)
                     try {
                         msg.should.have.property('payload', '4,foo,true,,0,"Hello\nWorld",,,undefined,null,null\n');
                         done();
@@ -718,7 +718,7 @@ describe('CSV node', function() {
                 var n1 = helper.getNode("n1");
                 var n2 = helper.getNode("n2");
                 n2.on("input", function(msg) {
-                    // console.log("GOT",msg)
+                    // console.logger("GOT",msg)
                     try {
                         msg.should.have.property('payload', '1,foo,"ba""r","di,ng",,undefined,null\n');
                         done();

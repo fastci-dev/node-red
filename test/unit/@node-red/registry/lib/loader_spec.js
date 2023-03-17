@@ -438,7 +438,7 @@ describe("red/nodes/registry/loader",function() {
         //     stubs.push(sinon.stub(registry,"getNodeInfo").callsFake(function(){ return null; }));
         //
         //     stubs.push(sinon.stub(nodes,"registerType"));
-        //     loader.init({nodes:nodes,log:{info:function(){},_:function(){}},settings:{available:function(){return true;}}});
+        //     loader.init({nodes:nodes,logger:{info:function(){},_:function(){}},settings:{available:function(){return true;}}});
         //     loader.load().then(function(result) {
         //
         //         registry.addModule.called.should.be.true();

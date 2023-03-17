@@ -131,9 +131,9 @@ describe("runtime", function() {
                 ].filter(cb);
             });
             runtime.init({testSettings: true, httpAdminRoot:"/", load:function() { return Promise.resolve();}});
-            // sinon.stub(console,"log");
+            // sinon.stub(console,"logger");
             runtime.start().then(function() {
-                // console.log.restore();
+                // console.logger.restore();
                 try {
                     storageInit.calledOnce.should.be.true();
                     redNodesInit.calledOnce.should.be.true();
@@ -209,9 +209,9 @@ describe("runtime", function() {
                 {testSettings: true, runtimeMetricInterval:200, httpAdminRoot:"/", load:function() { return Promise.resolve();}},
                 {},
                 undefined);
-            // sinon.stub(console,"log");
+            // sinon.stub(console,"logger");
             runtime.start().then(function() {
-                // console.log.restore();
+                // console.logger.restore();
                 setTimeout(function() {
                     try {
                         log.log.args.should.have.lengthOf(3);

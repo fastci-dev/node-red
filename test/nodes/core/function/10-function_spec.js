@@ -358,23 +358,23 @@ describe('function node', function() {
             },20);
         });
     }
-    it('should drop and log non-object message types - string', function(done) {
+    it('should drop and logger non-object message types - string', function(done) {
         testNonObjectMessage('return "foo"', done)
     });
-    it('should drop and log non-object message types - buffer', function(done) {
+    it('should drop and logger non-object message types - buffer', function(done) {
         testNonObjectMessage('return Buffer.from("hello")', done)
     });
-    it('should drop and log non-object message types - array', function(done) {
+    it('should drop and logger non-object message types - array', function(done) {
         testNonObjectMessage('return [[[1,2,3]]]', done)
     });
-    it('should drop and log non-object message types - boolean', function(done) {
+    it('should drop and logger non-object message types - boolean', function(done) {
         testNonObjectMessage('return true', done)
     });
-    it('should drop and log non-object message types - number', function(done) {
+    it('should drop and logger non-object message types - number', function(done) {
         testNonObjectMessage('return 123', done)
     });
 
-    it('should handle and log script error', function(done) {
+    it('should handle and logger script error', function(done) {
         var flow = [{id:"n1",type:"function",wires:[["n2"]],func:"var a = 1;\nretunr"}];
         helper.load(functionNode, flow, function() {
             var n1 = helper.getNode("n1");
@@ -400,7 +400,7 @@ describe('function node', function() {
     });
 
     it('should handle node.on()', function(done) {
-        var flow = [{id:"n1",type:"function",wires:[["n2"]],func:"node.on('close',function(){ node.log('closed')});"}];
+        var flow = [{id:"n1",type:"function",wires:[["n2"]],func:"node.on('close',function(){ node.logger('closed')});"}];
         helper.load(functionNode, flow, function() {
             var n1 = helper.getNode("n1");
             n1.receive({payload:"foo",topic: "bar"});
@@ -1558,35 +1558,35 @@ describe('function node', function() {
             });
         }
 
-        it('should log an Info Message', function (done) {
-            testLog("","node.log('test');","INFO",done);
+        it('should logger an Info Message', function (done) {
+            testLog("","node.logger('test');","INFO",done);
         });
-        it('should log a Debug Message', function (done) {
+        it('should logger a Debug Message', function (done) {
             testLog("","node.debug('test');","DEBUG",done);
         });
-        it('should log a Trace Message', function (done) {
+        it('should logger a Trace Message', function (done) {
             testLog("","node.trace('test');","TRACE",done);
         });
-        it('should log a Warning Message', function (done) {
+        it('should logger a Warning Message', function (done) {
             testLog("","node.warn('test');","WARN",done);
         });
-        it('should log an Error Message', function (done) {
+        it('should logger an Error Message', function (done) {
             testLog("","node.error('test');","ERROR",done);
         });
 
-        it('should log an Info Message - initialise', function (done) {
-            testLog("node.log('test');","","INFO",done);
+        it('should logger an Info Message - initialise', function (done) {
+            testLog("node.logger('test');","","INFO",done);
         });
-        it('should log a Debug Message - initialise', function (done) {
+        it('should logger a Debug Message - initialise', function (done) {
             testLog("node.debug('test');","","DEBUG",done);
         });
-        it('should log a Trace Message - initialise', function (done) {
+        it('should logger a Trace Message - initialise', function (done) {
             testLog("node.trace('test');","","TRACE",done);
         });
-        it('should log a Warning Message - initialise', function (done) {
+        it('should logger a Warning Message - initialise', function (done) {
             testLog("node.warn('test');","","WARN",done);
         });
-        it('should log an Error Message - initialise', function (done) {
+        it('should logger an Error Message - initialise', function (done) {
             testLog("node.error('test');","","ERROR",done);
         });
 

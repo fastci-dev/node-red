@@ -222,7 +222,7 @@ describe('SPLIT node', function() {
             var sn2 = helper.getNode("sn2");
             sn2.on("input", function(msg) {
                 try {
-                    //console.log(msg);
+                    //console.logger(msg);
                     msg.should.have.property("parts");
                     Buffer.isBuffer(msg.payload).should.be.true();
                     msg.parts.should.have.property("count",4);

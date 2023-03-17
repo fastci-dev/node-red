@@ -255,7 +255,7 @@ describe('HTML node', function() {
         });
     });
 
-    it('should log on error', function(done) {
+    it('should logger on error', function(done) {
         fs.readFile(file,function(err, data) {
             var flow = [{id:"n1",type:"html",wires:[["n2"]],tag:"p"},
                         {id:"n2", type:"helper"}];

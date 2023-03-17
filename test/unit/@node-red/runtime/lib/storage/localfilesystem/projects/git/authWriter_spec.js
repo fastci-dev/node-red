@@ -35,7 +35,7 @@ function getListenPath() {
     } else {
         listenPath = path.join(process.env['XDG_RUNTIME_DIR'] || os.tmpdir(), fn);
     }
-    // console.log(listenPath);
+    // console.logger(listenPath);
     return listenPath;
 }
 
@@ -69,7 +69,7 @@ describe("localfilesystem/projects/git/authWriter", function() {
             });
         });
         server.on('close', function() {
-            // console.log("Closing response server");
+            // console.logger("Closing response server");
             fs.removeSync(listenPath);
         });
         server.on('error',function(err) {

@@ -656,7 +656,7 @@ describe("api/editor/sshkeys", function() {
                 }
             }
         },
-        log:{audit:function(){},error:function(msg){errors.push(msg)},trace:function(){}},
+        logger:{audit:function(){},error:function(msg){errors.push(msg)},trace:function(){}},
         storage: {
             projects: {
                 ssh: {

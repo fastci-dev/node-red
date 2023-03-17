@@ -486,14 +486,14 @@ describe("@node-red/util/util", function() {
     describe('normalisePropertyExpression', function() {
         function testABC(input,expected) {
             var result = util.normalisePropertyExpression(input);
-            // console.log("+",input);
-            // console.log(result);
+            // console.logger("+",input);
+            // console.logger(result);
             result.should.eql(expected);
         }
         function testABCWithMessage(input,msg,expected) {
             var result = util.normalisePropertyExpression(input,msg);
-            // console.log("+",input);
-            // console.log(result);
+            // console.logger("+",input);
+            // console.logger(result);
             result.should.eql(expected);
         }
         function testInvalid(input,msg) {

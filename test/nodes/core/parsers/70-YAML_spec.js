@@ -122,7 +122,7 @@ describe('YAML node', function() {
         });
     });
 
-    it('should log an error if asked to parse an invalid yaml string', function(done) {
+    it('should logger an error if asked to parse an invalid yaml string', function(done) {
         var flow = [{id:"yn1",type:"yaml",wires:[["yn2"]],func:"return msg;"},
                     {id:"yn2", type:"helper"}];
         helper.load(yamlNode, flow, function() {
@@ -148,7 +148,7 @@ describe('YAML node', function() {
         });
     });
 
-    it('should log an error if asked to parse something thats not yaml or js', function(done) {
+    it('should logger an error if asked to parse something thats not yaml or js', function(done) {
         var flow = [{id:"yn1",type:"yaml",wires:[["yn2"]],func:"return msg;"},
                     {id:"yn2", type:"helper"}];
         helper.load(yamlNode, flow, function() {

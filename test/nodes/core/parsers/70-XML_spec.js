@@ -135,7 +135,7 @@ describe('XML node', function() {
         });
     });
 
-    it('should log an error if asked to parse an invalid xml string', function(done) {
+    it('should logger an error if asked to parse an invalid xml string', function(done) {
         var flow = [{id:"n1",type:"xml",wires:[["n2"]],func:"return msg;"},
                     {id:"n2", type:"helper"}];
         helper.load(xmlNode, flow, function() {
@@ -158,7 +158,7 @@ describe('XML node', function() {
         });
     });
 
-    it('should log an error if asked to parse something thats not xml or js', function(done) {
+    it('should logger an error if asked to parse something thats not xml or js', function(done) {
         var flow = [{id:"n1",type:"xml",wires:[["n2"]],func:"return msg;"},
                     {id:"n2", type:"helper"}];
         helper.load(xmlNode, flow, function() {

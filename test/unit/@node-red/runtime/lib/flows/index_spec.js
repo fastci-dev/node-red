@@ -457,7 +457,7 @@ describe('flows/index', function() {
     //             done();
     //         });
     //
-    //         flows.init({log:mockLog, settings:{},storage:storage});
+    //         flows.init({logger:mockLog, settings:{},storage:storage});
     //         flows.load().then(function() {
     //             flows.startFlows();
     //         });
@@ -488,7 +488,7 @@ describe('flows/index', function() {
     //             }
     //         });
     //
-    //         flows.init({log:mockLog, settings:{},storage:storage});
+    //         flows.init({logger:mockLog, settings:{},storage:storage});
     //         flows.load().then(function() {
     //             flows.startFlows();
     //         });
@@ -510,7 +510,7 @@ describe('flows/index', function() {
     //             done();
     //         });
     //
-    //         flows.init({log:mockLog, settings:{},storage:storage});
+    //         flows.init({logger:mockLog, settings:{},storage:storage});
     //         flows.load().then(function() {
     //             flows.startFlows();
     //         });
@@ -542,7 +542,7 @@ describe('flows/index', function() {
     //             }
     //         });
     //
-    //         flows.init({log:mockLog, settings:{},storage:storage});
+    //         flows.init({logger:mockLog, settings:{},storage:storage});
     //         flows.load().then(function() {
     //             flows.startFlows();
     //         });

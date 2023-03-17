@@ -131,7 +131,7 @@ describe('range Node', function() {
         helper.load(rangeNode, flow, function() {
             var rangeNode1 = helper.getNode("rangeNode1");
             var helperNode1 = helper.getNode("helperNode1");
-            rangeNode1.on("call:log",function(args) {
+            rangeNode1.on("call:logger",function(args) {
                 var log = args.args[0];
                 if (log.indexOf("notnumber") > -1) {
                     rangeNode1.log.restore();

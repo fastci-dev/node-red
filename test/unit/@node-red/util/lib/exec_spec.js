@@ -36,7 +36,7 @@ describe("runtime/exec", function() {
     beforeEach(function() {
 
         logEvents = [];
-        events.on("event-log", eventLogHandler);
+        events.on("event-logger", eventLogHandler);
 
         mockProcess = new EventEmitter();
         mockProcess.stdout = new EventEmitter();
@@ -48,7 +48,7 @@ describe("runtime/exec", function() {
     });
 
     afterEach(function() {
-        events.removeListener("event-log", eventLogHandler);
+        events.removeListener("event-logger", eventLogHandler);
         if (child_process.spawn.restore) {
             child_process.spawn.restore();
         }

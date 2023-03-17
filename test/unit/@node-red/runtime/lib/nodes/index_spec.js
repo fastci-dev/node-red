@@ -92,8 +92,8 @@ describe("red/nodes/index", function() {
     it('flows should be initialised',function(done) {
         index.init(runtime);
         index.loadFlows().then(function() {
-            // console.log(testFlows);
-            // console.log(index.getFlows());
+            // console.logger(testFlows);
+            // console.logger(index.getFlows());
             should.deepEqual(testFlows, index.getFlows().flows);
             done();
         }).catch(function(err) {

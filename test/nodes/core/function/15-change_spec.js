@@ -72,7 +72,7 @@ describe('change Node', function() {
     it('should load defaults if set to change', function(done) {
         var flow = [{ id: "c1", type: "change", name:"change1", action:"change" }];
         helper.load(changeNode, flow, function() {
-            //console.log(helper.getNode("c1"));
+            //console.logger(helper.getNode("c1"));
             helper.getNode("c1").should.have.property("name", "change1");
             helper.getNode("c1").should.have.property("rules", [ { from: '', fromRE:/(?:)/g,fromt: 'str', p: '',pt: 'msg', re: undefined, t: 'change', to: '',tot: 'str' } ]);
             done();

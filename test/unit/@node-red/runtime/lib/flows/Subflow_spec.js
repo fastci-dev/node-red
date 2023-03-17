@@ -46,11 +46,11 @@ describe('Subflow', function() {
         var runtime = {
             settings:{},
             log:{
-                log: sinon.stub(), // function() { console.log("l",[...arguments].map(a => JSON.stringify(a)).join(" ")) },//
-                debug: sinon.stub(), // function() { console.log("d",[...arguments].map(a => JSON.stringify(a)).join(" ")) },//sinon.stub(),
-                trace: sinon.stub(), // function() { console.log("t",[...arguments].map(a => JSON.stringify(a)).join(" ")) },//sinon.stub(),
-                warn: sinon.stub(), // function() { console.log("w",[...arguments].map(a => JSON.stringify(a)).join(" ")) },//sinon.stub(),
-                info: sinon.stub(), // function() { console.log("i",[...arguments].map(a => JSON.stringify(a)).join(" ")) },//sinon.stub(),
+                log: sinon.stub(), // function() { console.logger("l",[...arguments].map(a => JSON.stringify(a)).join(" ")) },//
+                debug: sinon.stub(), // function() { console.logger("d",[...arguments].map(a => JSON.stringify(a)).join(" ")) },//sinon.stub(),
+                trace: sinon.stub(), // function() { console.logger("t",[...arguments].map(a => JSON.stringify(a)).join(" ")) },//sinon.stub(),
+                warn: sinon.stub(), // function() { console.logger("w",[...arguments].map(a => JSON.stringify(a)).join(" ")) },//sinon.stub(),
+                info: sinon.stub(), // function() { console.logger("i",[...arguments].map(a => JSON.stringify(a)).join(" ")) },//sinon.stub(),
                 metric: sinon.stub(),
                 _: function() { return "abc"}
             }
@@ -70,7 +70,7 @@ describe('Subflow', function() {
         this.received = null;
         currentNodes[node.id] = node;
         this.on('input',function(msg) {
-            // console.log(this.id,msg.payload);
+            // console.logger(this.id,msg.payload);
             node.handled++;
             node.received = msg.payload;
             node.send(msg);

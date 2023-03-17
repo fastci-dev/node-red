@@ -344,7 +344,7 @@ describe('rbe node', function() {
             var c = 0;
             n2.on("input", function(msg) {
                 c = c + 1;
-                //console.log(c,msg);
+                //console.logger(c,msg);
                 if (c === 1) {
                     msg.should.have.a.property("payload", 0);
                 }
@@ -433,7 +433,7 @@ describe('rbe node', function() {
             var c = 0;
             n2.on("input", function(msg) {
                 c = c + 1;
-                //console.log(c,msg);
+                //console.logger(c,msg);
                 if (c === 1) {
                     msg.should.have.a.property("payload", 0);
                 }

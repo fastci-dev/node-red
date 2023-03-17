@@ -22,7 +22,7 @@ var NR_TEST_UTILS = require("nr-test-utils");
 var log = NR_TEST_UTILS.require("@node-red/util").log;
 
 
-describe("@node-red/util/log", function() {
+describe("@node-red/util/logger", function() {
     beforeEach(function () {
         var spy = sinon.stub(util, 'log').callsFake(function(arg){});
         var settings = {logging: { console: { level: 'metric', metrics: true } } };
@@ -160,7 +160,7 @@ describe("@node-red/util/log", function() {
         sinon.assert.neverCalledWithMatch(util.log,"[metric] ");
     });
 
-    it('add a custom log handler directly', function() {
+    it('add a custom logger handler directly', function() {
         var settings = {};
         log.init(settings);
 
@@ -189,7 +189,7 @@ describe("@node-red/util/log", function() {
         logEvents.filter(function(evt) { return evt.logger === 2}).should.have.lengthOf(6);
     });
 
-    it('remove a custom log handler directly', function() {
+    it('remove a custom logger handler directly', function() {
         var settings = {};
         log.init(settings);
 
@@ -224,7 +224,7 @@ describe("@node-red/util/log", function() {
 
 
     });
-    it('it can log without exception', function() {
+    it('it can logger without exception', function() {
         var msg = {
             msg: {
               mystrangeobj:"hello",
@@ -236,7 +236,7 @@ describe("@node-red/util/log", function() {
         msg.msg.constructor = { name: "strangeobj" };
         var ret = log.info(msg.msg);
     });
-    it('it can log an object but use .message', function() {
+    it('it can logger an object but use .message', function() {
         var msg = {
             msg: {
               message: "my special message",

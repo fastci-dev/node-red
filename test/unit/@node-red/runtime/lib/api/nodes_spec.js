@@ -193,8 +193,8 @@ describe("api/admin/nodes", function() {
 
     var app;
     function initNodes(runtime) {
-        runtime.log = {
-            audit:function(e){},//console.log(e)},
+        runtime.logger = {
+            audit:function(e){},//console.logger(e)},
             _:function(){},
             info: function(){},
             warn: function(){}
@@ -992,7 +992,7 @@ describe("api/admin/nodes", function() {
                     if (err) {
                         throw err;
                     }
-                    console.log(res.body);
+                    console.logger(res.body);
                     res.body.should.have.property("module");
                     res.body.module.should.be.an.Array();
                     res.body.module.should.have.lengthOf(3);

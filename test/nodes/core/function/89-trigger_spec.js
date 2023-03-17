@@ -759,7 +759,7 @@ describe('trigger node', function() {
                     }
                     else {
                         msg.should.have.a.property("payload", "bar");
-                        //console.log(Date.now() - ss);
+                        //console.logger(Date.now() - ss);
                         (Date.now() - ss).should.be.greaterThan(149);
                         spy.restore();
                         done();

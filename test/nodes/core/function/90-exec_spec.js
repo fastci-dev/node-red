@@ -149,7 +149,7 @@ describe('exec node', function() {
                         {id:"n2", type:"helper"},{id:"n3", type:"helper"},{id:"n4", type:"helper"}];
             var spy = sinon.stub(child_process, 'exec').callsFake(
                 function(arg1, arg2, arg3, arg4) {
-                    //console.log(arg1);
+                    //console.logger(arg1);
                     // arg3(error,stdout,stderr);
                     arg3(null,arg1,arg1.toUpperCase());
                 });
@@ -205,7 +205,7 @@ describe('exec node', function() {
                         {id:"n2", type:"helper"},{id:"n3", type:"helper"},{id:"n4", type:"helper"}];
             var spy = sinon.stub(child_process, 'exec').callsFake(
                 function(arg1, arg2, arg3, arg4) {
-                    //console.log(arg1);
+                    //console.logger(arg1);
                     // arg3(error,stdout,stderr);
                     arg3("error",Buffer.from([0x01,0x02,0x03,0x88]),Buffer.from([0x01,0x02,0x03,0x88]));
                 });
@@ -215,7 +215,7 @@ describe('exec node', function() {
                 var n3 = helper.getNode("n3");
                 var n4 = helper.getNode("n4");
                 n2.on("input", function(msg) {
-                    //console.log("n2",msg);
+                    //console.logger("n2",msg);
                     try {
                         msg.should.have.property("payload");
                         Buffer.isBuffer(msg.payload).should.be.true();
@@ -337,7 +337,7 @@ describe('exec node', function() {
                         {id:"n2", type:"helper"},{id:"n3", type:"helper"},{id:"n4", type:"helper"}];
             var spy = sinon.stub(child_process, 'exec').callsFake(
             function(arg1, arg2, arg3, arg4) {
-                //console.log(arg1);
+                //console.logger(arg1);
                 // arg3(error,stdout,stderr);
                 arg3({code: 1},arg1,arg1.toUpperCase());
             });
@@ -553,7 +553,7 @@ describe('exec node', function() {
                 var n4 = helper.getNode("n4");
                 var payload = "";
                 n2.on("input", function(msg) {
-                    //console.log(msg);
+                    //console.logger(msg);
                     try {
                         msg.should.have.property("payload");
                         msg.payload.should.be.a.String();
@@ -589,7 +589,7 @@ describe('exec node', function() {
                 var n3 = helper.getNode("n3");
                 var n4 = helper.getNode("n4");
                 n2.on("input", function(msg) {
-                    //console.log(msg);
+                    //console.logger(msg);
                     try {
                         msg.should.have.property("payload");
                         msg.payload.should.be.a.String();

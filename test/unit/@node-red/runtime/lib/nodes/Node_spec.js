@@ -651,21 +651,21 @@ describe('Node', function() {
     });
 
 
-    describe('#log', function() {
-        it('produces a log message', function(done) {
+    describe('#logger', function() {
+        it('produces a logger message', function(done) {
             var n = new RedNode({id:'123',type:'abc',z:'789', _flow: {log:function(msg) { loginfo = msg;}}});
             var loginfo = {};
-            n.log("a log message");
+            n.log("a logger message");
             should.deepEqual({level:Log.INFO, id:n.id,
-                               type:n.type, msg:"a log message",z:'789'}, loginfo);
+                               type:n.type, msg:"a logger message",z:'789'}, loginfo);
             done();
         });
-        it('produces a log message with a name', function(done) {
+        it('produces a logger message with a name', function(done) {
             var n = new RedNode({id:'123', type:'abc', name:"barney", z:'789', _flow: {log:function(msg) { loginfo = msg;}}});
             var loginfo = {};
-            n.log("a log message");
+            n.log("a logger message");
             should.deepEqual({level:Log.INFO, id:n.id, name: "barney",
-                              type:n.type, msg:"a log message",z:'789'}, loginfo);
+                              type:n.type, msg:"a logger message",z:'789'}, loginfo);
             done();
         });
     });

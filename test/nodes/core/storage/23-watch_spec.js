@@ -72,7 +72,7 @@ describe('watch Node', function() {
             var len = Object.keys(results).length;
             n2.on("input", function(msg) {
                 try {
-                    // console.log(msg);
+                    // console.logger(msg);
                     msg.should.have.property('file');
 
                     var file = msg.file;

@@ -491,7 +491,7 @@ describe('file Nodes', function() {
                         var logEvents = helper.log().args.filter(function(evt) {
                             return evt[0].type == "file";
                         });
-                        //console.log(logEvents);
+                        //console.logger(logEvents);
                         logEvents.should.have.length(1);
                         logEvents[0][0].should.have.a.property('msg');
                         logEvents[0][0].msg.toString().should.equal("file.errors.nofilename");
@@ -515,7 +515,7 @@ describe('file Nodes', function() {
                         var logEvents = helper.log().args.filter(function(evt) {
                             return evt[0].type == "file";
                         });
-                        //console.log(logEvents);
+                        //console.logger(logEvents);
                         logEvents.should.have.length(0);
                         done();
                     }
@@ -541,7 +541,7 @@ describe('file Nodes', function() {
                         var logEvents = helper.log().args.filter(function(evt) {
                             return evt[0].type == "file";
                         });
-                        //console.log(logEvents);
+                        //console.logger(logEvents);
                         logEvents.should.have.length(1);
                         logEvents[0][0].should.have.a.property('msg');
                         logEvents[0][0].msg.toString().should.startWith("Stub error message");
@@ -571,7 +571,7 @@ describe('file Nodes', function() {
                         var logEvents = helper.log().args.filter(function(evt) {
                             return evt[0].type == "file";
                         });
-                        //console.log(logEvents);
+                        //console.logger(logEvents);
                         logEvents.should.have.length(1);
                         logEvents[0][0].should.have.a.property('msg');
                         logEvents[0][0].msg.toString().should.startWith("Stub error message");
@@ -596,7 +596,7 @@ describe('file Nodes', function() {
                         var logEvents = helper.log().args.filter(function(evt) {
                             return evt[0].type == "file";
                         });
-                        //console.log(logEvents);
+                        //console.logger(logEvents);
                         logEvents.should.have.length(1);
                         logEvents[0][0].should.have.a.property('msg');
                         logEvents[0][0].msg.toString().should.startWith("file.errors.deletefail");
@@ -622,7 +622,7 @@ describe('file Nodes', function() {
                         var logEvents = helper.log().args.filter(function(evt) {
                             return evt[0].type == "file";
                         });
-                        //console.log(logEvents);
+                        //console.logger(logEvents);
                         logEvents.should.have.length(1);
                         logEvents[0][0].should.have.a.property('msg');
                         logEvents[0][0].msg.toString().should.startWith("file.errors.appendfail");
@@ -652,7 +652,7 @@ describe('file Nodes', function() {
                         var logEvents = helper.log().args.filter(function(evt) {
                             return evt[0].type == "file";
                         });
-                        //console.log(logEvents);
+                        //console.logger(logEvents);
                         logEvents.should.have.length(0);
                         done();
                     }
@@ -676,7 +676,7 @@ describe('file Nodes', function() {
                         var logEvents = helper.log().args.filter(function(evt) {
                             return evt[0].type == "file";
                         });
-                        //console.log(logEvents);
+                        //console.logger(logEvents);
                         logEvents.should.have.length(1);
                         logEvents[0][0].should.have.a.property('msg');
                         logEvents[0][0].msg.toString().should.startWith("file.errors.writefail");
@@ -702,7 +702,7 @@ describe('file Nodes', function() {
                         var logEvents = helper.log().args.filter(function(evt) {
                             return evt[0].type == "file";
                         });
-                        //console.log(logEvents);
+                        //console.logger(logEvents);
                         logEvents.should.have.length(0);
                         done();
                     }
@@ -1364,7 +1364,7 @@ describe('file Nodes', function() {
                 var n2 = helper.getNode("n2");
                 var c = 0;
                 n2.on("input", function(msg) {
-                    // console.log(msg)
+                    // console.logger(msg)
                     try {
                         msg.should.have.property('payload');
                         msg.payload.should.be.a.String();

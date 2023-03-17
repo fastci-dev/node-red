@@ -309,7 +309,7 @@ describe('storage/localfilesystem', function() {
         });
     });
 
-    it('should log fsync errors and continue',function(done) {
+    it('should logger fsync errors and continue',function(done) {
         var flowFile = 'test.json';
         var flowFilePath = path.join(userDir,flowFile);
         localfilesystem.init({userDir:userDir, flowFile:flowFilePath,getUserSettings: () => {{}}}, mockRuntime).then(function() {

@@ -158,7 +158,7 @@ describe('JSON node', function() {
         });
     });
 
-    it('should log an error if asked to parse an invalid json string', function(done) {
+    it('should logger an error if asked to parse an invalid json string', function(done) {
         var flow = [{id:"jn1",type:"json",wires:[["jn2"]]},
                     {id:"jn2", type:"helper"}];
         helper.load(jsonNode, flow, function() {
@@ -184,7 +184,7 @@ describe('JSON node', function() {
         });
     });
 
-    it('should log an error if asked to parse an invalid json string in a buffer', function(done) {
+    it('should logger an error if asked to parse an invalid json string in a buffer', function(done) {
         var flow = [{id:"jn1",type:"json",action:"obj",wires:[["jn2"]]},
                     {id:"jn2", type:"helper"}];
         helper.load(jsonNode, flow, function() {
@@ -210,7 +210,7 @@ describe('JSON node', function() {
         });
     });
 
-    // it('should log an error if asked to parse something thats not json or js and not in force object mode', function(done) {
+    // it('should logger an error if asked to parse something thats not json or js and not in force object mode', function(done) {
     //     var flow = [{id:"jn1",type:"json",wires:[["jn2"]]},
     //                 {id:"jn2", type:"helper"}];
     //     helper.load(jsonNode, flow, function() {
@@ -218,7 +218,7 @@ describe('JSON node', function() {
     //         var jn2 = helper.getNode("jn2");
     //         setTimeout(function() {
     //             try {
-    //                 var logEvents = helper.log().args.filter(function(evt) {
+    //                 var logEvents = helper.logger().args.filter(function(evt) {
     //                     return evt[0].type == "json";
     //                 });
     //                 logEvents.should.have.length(1);
@@ -416,7 +416,7 @@ describe('JSON node', function() {
         });
     });
 
-    it('should log an error if passed an invalid object and valid schema', function(done) {
+    it('should logger an error if passed an invalid object and valid schema', function(done) {
         var flow = [{id:"jn1",type:"json",wires:[["jn2"]]},
                     {id:"jn2", type:"helper"}];
         helper.load(jsonNode, flow, function() {
@@ -444,7 +444,7 @@ describe('JSON node', function() {
         });
     });
 
-    it('should log an error if passed an invalid object and valid schema and action is object', function(done) {
+    it('should logger an error if passed an invalid object and valid schema and action is object', function(done) {
         var flow = [{id:"jn1",type:"json",action:"obj",wires:[["jn2"]]},
                     {id:"jn2", type:"helper"}];
         helper.load(jsonNode, flow, function() {
@@ -472,7 +472,7 @@ describe('JSON node', function() {
         });
     });
 
-    it('should log an error if passed an invalid JSON string and valid schema', function(done) {
+    it('should logger an error if passed an invalid JSON string and valid schema', function(done) {
         var flow = [{id:"jn1",type:"json",wires:[["jn2"]]},
                     {id:"jn2", type:"helper"}];
         helper.load(jsonNode, flow, function() {
@@ -500,7 +500,7 @@ describe('JSON node', function() {
         });
     });
 
-    it('should log an error if passed an invalid JSON string and valid schema and action is string', function(done) {
+    it('should logger an error if passed an invalid JSON string and valid schema and action is string', function(done) {
         var flow = [{id:"jn1",type:"json",action:"str",wires:[["jn2"]]},
                     {id:"jn2", type:"helper"}];
         helper.load(jsonNode, flow, function() {
@@ -528,7 +528,7 @@ describe('JSON node', function() {
         });
     });
 
-    it('should log an error if passed a valid object and invalid schema', function(done) {
+    it('should logger an error if passed a valid object and invalid schema', function(done) {
         var flow = [{id:"jn1",type:"json",wires:[["jn2"]]},
                     {id:"jn2", type:"helper"}];
         helper.load(jsonNode, flow, function() {
