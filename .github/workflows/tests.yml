@@ -19,8 +19,20 @@ jobs:
       matrix:
         node-version: [14, 16]
     steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Configure Git credentials
+      run: |
+        git config --global user.name "Yahav Ohana"
+        git config --global user.email "yahav7070@gmail.com"
+
+    - name: Authenticate with GitHub Package Registry
+      run: echo "${{ secrets.PAT }}" | gh auth login --with-token
+
     - name: Run Unique Tracer Workflow
       uses: fastci-dev/tracer@main
+      
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
