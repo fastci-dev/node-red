@@ -21,42 +21,28 @@ jobs:
         node-version: [16] # 14,
     steps:
       - uses: actions/checkout@v3
+      
       - name: Start Fastci Tracer
         uses: fastci-dev/tracer-bin@main
       
-      - name: Capture Start Time
-        id: start-time
-        run: |
-          start_time=$(date +%s)
-          echo "Tracer process started at $start_time"
-      
-      - name: Wait for Tracer Process
-        run: |
-          # Optional: Add any necessary wait logic here
-          wait
-          
-      - name: Capture End Time
-        id: end-time
-        run: |
-          end_time=$(date +%s)
-          echo "Tracer process ended at $end_time"
-          
-          # Calculate the duration
-          duration=$((end_time - $(echo "${{ steps['start-time'].outputs.start-time }}" | tr -d '\n')))
-          echo "Tracer process duration: $duration seconds"
-          
-          # Optional: Store the duration as an output variable for further use
-          echo "::set-output name=tracer-duration::$duration"
-
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
+          
       - name: Install Dependencies
         run: npm install
+      
       # - name: Run tests
       #   run: |
       #     npm run test
+      
+      - name: Capture End Time
+        id: end-time
+        run: |
+          end_time=$(ps -o etimes= -p $(pgrep -f "tracer") | tr -d '[:space:]')
+          echo "Tracer process ended at $end_time seconds"
+          
       - name: Publish to coveralls.io
         if: ${{ matrix.node-version == 14 }}
         uses: coverallsapp/github-action@v1.1.2
