@@ -24,29 +24,32 @@ jobs:
 
       - name: Start Fastci Tracer
         id: start-tracer
-        uses: fastci-dev/tracer-bin@main
-      
+        run: |
+          echo "Tracer process started at $(date +%s)"
+          # Run your tracer command here
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
       
-      - name: Install Dependencies
-        run: npm install
+      # - name: Install Dependencies
+      #   run: npm install
       
       # - name: Run tests
       #   run: |
       #     npm run test
       
-      # - name: Publish to coveralls.io
-      #   if: ${{ matrix.node-version == 14 }}
-      #   uses: coverallsapp/github-action@v1.1.2
-      #   with:
-      #     github-token: ${{ github.token }}
+      - name: Publish to coveralls.io
+        if: ${{ matrix.node-version == 14 }}
+        uses: coverallsapp/github-action@v1.1.2
+        with:
+          github-token: ${{ github.token }}
 
       - name: End Fastci Tracer
         id: end-tracer
-        run: echo "Fastci Tracer process ended."
+        run: |
+          echo "Fastci Tracer process ended at $(date +%s)"
 
       - name: Check Tracer Status
         run: |
