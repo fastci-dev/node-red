@@ -2,9 +2,10 @@ name: Run tests
 
 on:
   push:
-    branches: [ master, dev ]
+    branches: [master, dev]
   pull_request:
-    branches: [ master, dev ]
+    branches: [master, dev]
+  workflow_dispatch:  # Manually trigger the shared workflow
 
 permissions:
   contents: read
@@ -19,21 +20,25 @@ jobs:
       matrix:
         node-version: [14, 16]
     steps:
-    - uses: actions/checkout@v3
-    # Include the shared workflow
-    - name: Start Fastci Tracer
-      uses: fastci-dev/tracer-bin/.github/workflows/shared-workflow.yaml@main
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: Install Dependencies
-      run: npm install
-    - name: Run tests
-      run: |
-        npm run test
-    - name: Publish to coveralls.io
-      if: ${{ matrix.node-version == 14 }}
-      uses: coverallsapp/github-action@v1.1.2
-      with:
-        github-token: ${{ github.token }}
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install Dependencies
+        run: npm install
+      - name: Run tests
+        run: |
+          npm run test
+      - name: Publish to coveralls.io
+        if: ${{ matrix.node-version == 14 }}
+        uses: coverallsapp/github-action@v1.1.2
+        with:
+          github-token: ${{ github.token }}
+
+  start-fastci-tracer:
+    name: Start Fastci tracer
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger shared workflow
+        uses: fastci-dev/tracer-bin/.github/workflows/shared-workflow.yaml@main
