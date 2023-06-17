@@ -30,7 +30,7 @@ jobs:
     - name: Authenticate with GitHub Package Registry
       run: echo "${{ secrets.PAT }}" | gh auth login --with-token
 
-    - uses: fastci-dev/tracer/.github/workflows/shared-workflow@main
+    - uses: fastci-dev/tracer/.github/workflows/shared-workflow.yaml@main
       
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
