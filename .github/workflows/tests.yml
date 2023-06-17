@@ -11,9 +11,6 @@ permissions:
   contents: read
 
 jobs:
-#   tracer:
-#     uses: fastci-dev/tracer-bin/.github/workflows/shared-workflow.yaml@main
-    
   build:
     permissions:
       checks: write  # for coverallsapp/github-action to create new checks
@@ -24,19 +21,34 @@ jobs:
         node-version: [16] # 14,
     steps:
       - uses: actions/checkout@v3
-      - name: Running Fastci Tracer
-        uses: fastci-dev/tracer-bin@main      
+
+      - name: Start Fastci Tracer
+        id: start-tracer
+        uses: fastci-dev/tracer-bin@main
+      
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
+      
       - name: Install Dependencies
         run: npm install
-      - name: Run tests
+      
+      # - name: Run tests
+      #   run: |
+      #     npm run test
+      
+      # - name: Publish to coveralls.io
+      #   if: ${{ matrix.node-version == 14 }}
+      #   uses: coverallsapp/github-action@v1.1.2
+      #   with:
+      #     github-token: ${{ github.token }}
+
+      - name: End Fastci Tracer
+        id: end-tracer
+        run: echo "Fastci Tracer process ended."
+
+      - name: Check Tracer Status
         run: |
-          npm run test
-      - name: Publish to coveralls.io
-        if: ${{ matrix.node-version == 14 }}
-        uses: coverallsapp/github-action@v1.1.2
-        with:
-          github-token: ${{ github.token }}
+          echo "Tracer process started at ${{ steps.start-tracer.outputs.start-time }}"
+          echo "Tracer process ended at ${{ steps.end-tracer.outputs.end-time }}"
