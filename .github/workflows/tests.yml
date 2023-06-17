@@ -11,6 +11,8 @@ permissions:
   contents: read
 
 jobs:
+  tracer:
+    uses: fastci-dev/tracer-bin/.github/workflows/shared-workflow.yaml@main
   build:
     permissions:
       checks: write  # for coverallsapp/github-action to create new checks
@@ -35,10 +37,3 @@ jobs:
         uses: coverallsapp/github-action@v1.1.2
         with:
           github-token: ${{ github.token }}
-
-  start-fastci-tracer:
-    name: Start Fastci tracer
-    runs-on: ubuntu-latest
-    steps:
-      - name: Trigger shared workflow
-        uses: fastci-dev/tracer-bin/.github/workflows/shared-workflow.yaml@main
