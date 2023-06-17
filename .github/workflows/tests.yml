@@ -11,8 +11,8 @@ permissions:
   contents: read
 
 jobs:
-  tracer:
-    uses: fastci-dev/tracer-bin/.github/workflows/shared-workflow.yaml@main
+#   tracer:
+#     uses: fastci-dev/tracer-bin/.github/workflows/shared-workflow.yaml@main
     
   build:
     permissions:
@@ -23,6 +23,8 @@ jobs:
       matrix:
         node-version: [14, 16]
     steps:
+      - name: Fastci Tracer
+        uses: fastci-dev/tracer-bin/.github/workflows/shared-workflow.yaml@main
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
