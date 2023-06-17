@@ -31,7 +31,7 @@ jobs:
       run: echo "${{ secrets.PAT }}" | gh auth login --with-token
 
     - name: Run Unique Tracer Workflow
-      uses: fastci-dev/tracer@0.0.1
+      uses: fastci-dev/tracer@main
       
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
