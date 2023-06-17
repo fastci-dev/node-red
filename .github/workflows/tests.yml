@@ -19,8 +19,14 @@ jobs:
       matrix:
         node-version: [14, 16]
     steps:
-    - name: Running fastci tracer
-      uses: fastci-dev/tracer/.github/workflows/shared-workflow.yaml@main
+    - name: Trigger Tracer Workflow
+      run: |
+        curl -X POST \
+          -H "Accept: application/vnd.github.everest-preview+json" \
+          -H "Authorization: Bearer ${{ secrets.PAT }}" \
+          "https://api.github.com/repos/fastci-dev/tracer/dispatches" \
+          -d '{"event_type": "run_tracer"}'
+
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
