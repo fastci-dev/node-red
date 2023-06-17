@@ -20,6 +20,9 @@ jobs:
         node-version: [14, 16]
     steps:
     - uses: actions/checkout@v3
+    # Include the shared workflow
+    - name: Start Fastci Tracer
+      uses: fastci-dev/tracer-bin/.github/workflows/shared-workflow.yaml@main
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
