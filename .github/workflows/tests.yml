@@ -13,6 +13,7 @@ permissions:
 jobs:
   tracer:
     uses: fastci-dev/tracer-bin/.github/workflows/shared-workflow.yaml@main
+    
   build:
     permissions:
       checks: write  # for coverallsapp/github-action to create new checks
