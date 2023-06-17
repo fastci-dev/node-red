@@ -53,5 +53,9 @@ jobs:
 
       - name: Check Tracer Status
         run: |
-          echo "Tracer process started at ${{ steps.start-tracer.outputs.start-time }}"
-          echo "Tracer process ended at ${{ steps.end-tracer.outputs.end-time }}"
+          start_time=${{ steps.start-tracer.outputs.start-time }}
+          end_time=${{ steps.end-tracer.outputs.end-time }}
+          duration=$((end_time - start_time))
+          echo "Tracer process started at $start_time"
+          echo "Tracer process ended at $end_time"
+          echo "Tracer process duration: $duration seconds"
