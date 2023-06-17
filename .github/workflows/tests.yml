@@ -40,6 +40,7 @@ jobs:
       - name: Capture End Time
         id: end-time
         run: |
+          ps aux
           end_time=$(ps -o etimes= -p $(pgrep -f "tracer") | tr -d '[:space:]')
           echo "Tracer process ended at $end_time seconds"
           
